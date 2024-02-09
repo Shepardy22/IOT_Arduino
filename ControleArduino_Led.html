@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Controlar LED</title>
+</head>
+<body>
+    <h1>Controlar LED</h1>
+    <button id="ligarButton">Ligar LED</button>
+    <button id="desligarButton">Desligar LED</button>
+
+    <script>
+        document.getElementById("ligarButton").addEventListener("click", function() {
+            fetch("http://127.0.0.1:8888/ligar-led", {
+                method: "POST"
+            })
+            .then(response => response.text())
+            .then(data => {
+                console.log("Resposta do servidor:", data);
+            })
+            .catch(error => {
+                console.error("Erro ao enviar solicitação:", error);
+            });
+        });
+
+        document.getElementById("desligarButton").addEventListener("click", function() {
+            fetch("http://127.0.0.1:8888/desligar-led", {
+                method: "POST"
+            })
+            .then(response => response.text())
+            .then(data => {
+                console.log("Resposta do servidor:", data);
+            })
+            .catch(error => {
+                console.error("Erro ao enviar solicitação:", error);
+            });
+        });
+    </script>
+</body>
+</html>
